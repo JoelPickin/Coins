@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Coins.Views.CreateIssue">
+    <StackLayout>
+        <Picker ItemsSource="{Binding IssueTypes}">
+
+        </Picker>
+        
+        <Entry Placeholder="Enter title..." Text="{Binding Title}"></Entry>
+        <Editor Placeholder="Issue description" HeightRequest="100" Text="{Binding Description}"></Editor>
+        <DatePicker Date="{Binding DueDate}"></DatePicker>
+
+        <StackLayout ClassId="Safety">
+            <Entry Keyboard="Telephone" Placeholder="Contact number" Text="{Binding ContactNumber}"></Entry>
+        </StackLayout>
+
+        <StackLayout>
+            <Label Text="High Voltage?"></Label>
+            
+            <StackLayout Orientation="Horizontal" ClassId="Electrical">
+                <Button Text="Yes" Command="{Binding HighVoltageSelectedCommand}" CommandParameter="Yes"></Button>
+                <Button Text="No"  Command="{Binding HighVoltageSelectedCommand}" CommandParameter="No"></Button>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout ClassId="Mechanical">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Service" Command="{Binding RepairTypeSelectedCommand}" CommandParameter="Service"></Button>
+                <Button Text="Replacement" Command="{Binding RepairTypeSelectedCommand}" CommandParameter="Replacement"></Button>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout ClassId="Paint">
+            <Entry Keyboard="Numeric" Placeholder="Surface size" Text="{Binding SurfaceSize}"></Entry>
+        </StackLayout>
+
+        <Button Text="Create Issue" VerticalOptions="End" Command="{Binding CreateIssueCommand}"></Button>
+    </StackLayout>
+</ContentPage>

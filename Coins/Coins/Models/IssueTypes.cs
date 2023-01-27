@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Coins.Models
 {
-    public class Electrical : Issue
+    public class IssueTypes
     {
-        public HighVoltage HighVoltage { get; set; }
+        public IssueType Type { get; set; }
+        public int Count { get; set; }
     }
 }

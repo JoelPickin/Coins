@@ -1,3 +1,4 @@
+using Coins.Services;
 using Coins.ViewModels;
 using Coins.Views;
 using Prism;
@@ -19,7 +20,7 @@ namespace Coins
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/Dashboard");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -27,7 +28,12 @@ namespace Coins
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<Dashboard, DashboardViewModel>();
+            containerRegistry.RegisterForNavigation<ViewIssue, ViewIssueViewModel>();
+            containerRegistry.RegisterForNavigation<CreateIssue, CreateIssueViewModel>();
+            containerRegistry.RegisterForNavigation<IssuesList, IssuesListViewModel>();
+
+            containerRegistry.Register<IssueService>();
         }
     }
 }
